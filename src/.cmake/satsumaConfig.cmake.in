@@ -1,0 +1,6 @@
+get_filename_component(CUR_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+
+if(NOT TARGET satsuma::libsatsuma)
+    include("${CUR_CMAKE_DIR}/satsumaTargets.cmake")
+endif()
+

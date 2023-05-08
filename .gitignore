@@ -1,0 +1,22 @@
+/build*
+/cmake-build-*
+
+# IDE stuff:
+.idea
+.project
+.cproject
+CMakeLists.txt.user
+*.swp
+.settings
+/.vs
+
+cppcheck.log
+
+# gcov output files:
+*.gcda
+*.gcno
+
+# misc
+.DS_Store
+/external
+.cache
