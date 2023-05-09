@@ -1,3 +1,5 @@
+//  SPDX-FileCopyrightText: 2023 Martin Heistermann <martin.heistermann@unibe.ch>
+//  SPDX-License-Identifier: MIT
 #include <libsatsuma/Reductions/BiMDF_to_BiMCF.hh>
 
 #include <cassert>

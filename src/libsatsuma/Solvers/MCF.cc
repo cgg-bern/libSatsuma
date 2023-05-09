@@ -1,3 +1,5 @@
+//  SPDX-FileCopyrightText: 2023 Martin Heistermann <martin.heistermann@unibe.ch>
+//  SPDX-License-Identifier: MIT
 #include <libsatsuma/Solvers/MCF.hh>
 #include <libsatsuma/Exceptions.hh>
 #include <lemon/network_simplex.h>

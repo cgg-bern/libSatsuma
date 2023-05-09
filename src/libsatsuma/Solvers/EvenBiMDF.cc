@@ -1,3 +1,5 @@
+//  SPDX-FileCopyrightText: 2023 Martin Heistermann <martin.heistermann@unibe.ch>
+//  SPDX-License-Identifier: MIT
 #include <libsatsuma/Solvers/EvenBiMDF.hh>
 #include <libsatsuma/Problems/TJoin.hh>
 #include <libsatsuma/Solvers/TJoinMST.hh>

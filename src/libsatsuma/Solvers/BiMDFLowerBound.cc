@@ -1,3 +1,5 @@
+//  SPDX-FileCopyrightText: 2023 Martin Heistermann <martin.heistermann@unibe.ch>
+//  SPDX-License-Identifier: MIT
 #include <libsatsuma/Solvers/BiMDFLowerBound.hh>
 #include <libsatsuma/Solvers/BiMDFDoubleCover.hh>
 #include <libsatsuma/Solvers/BiMDFGuess.hh>

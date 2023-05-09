@@ -1,3 +1,5 @@
+//  SPDX-FileCopyrightText: 2023 Martin Heistermann <martin.heistermann@unibe.ch>
+//  SPDX-License-Identifier: MIT
 #include <libsatsuma/Reductions/BiMDF_Simplification.hh>
 #include <lemon/connectivity.h>
 #include <cassert>

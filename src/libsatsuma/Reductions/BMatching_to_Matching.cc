@@ -1,3 +1,5 @@
+//  SPDX-FileCopyrightText: 2023 Martin Heistermann <martin.heistermann@unibe.ch>
+//  SPDX-License-Identifier: MIT
 #include <libsatsuma/Reductions/BMatching_to_Matching.hh>
 #include <libsatsuma/Solvers/Matching.hh>
 #include <limits>

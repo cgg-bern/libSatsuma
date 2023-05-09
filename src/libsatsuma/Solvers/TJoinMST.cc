@@ -1,3 +1,5 @@
+//  SPDX-FileCopyrightText: 2023 Martin Heistermann <martin.heistermann@unibe.ch>
+//  SPDX-License-Identifier: MIT
 #include <libsatsuma/Solvers/TJoinMST.hh>
 #include <lemon/kruskal.h>
 #include <lemon/dfs.h>
