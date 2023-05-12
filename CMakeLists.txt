@@ -6,7 +6,7 @@ project (satsuma
     LANGUAGES C CXX
     )
 
-option(SATSUMA_ENABLE_BLOSSOM5 "Enable Blossom-V (non-free license)" ON)
+option(SATSUMA_ENABLE_BLOSSOM5 "Enable Blossom-V (non-free license)" OFF)
 
 if(NOT ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR} )
     message(WARNING "Do not use add_subdirectory on satsuma, use satsuma/src instead")
