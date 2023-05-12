@@ -21,9 +21,14 @@ configure_file (
   "${CMAKE_CURRENT_BINARY_DIR}/libsatsuma/Config/Gurobi.hh"
 )
 
-if (TARGET Blossom5::Blossom5) 
-    message("libSatsuma: building WITH blossom-v")
-    set (HAVE_BLOSSOM5 1)
+if (SATSUMA_ENABLE_BLOSSOM5)
+    if (TARGET Blossom5::Blossom5) 
+        message("libSatsuma: building WITH blossom-v")
+        set (HAVE_BLOSSOM5 1)
+    else()
+        message(WARNING "libSatsuma: SATSUMA_ENABLE_BLOSSOM5 specified, but target not found.")
+        set (HAVE_BLOSSOM5 0)
+    endif()
 else()
     message("libSatsuma: building WITHOUT blossom-v")
     set (HAVE_BLOSSOM5 0)
@@ -60,7 +65,7 @@ target_link_libraries(satsuma PUBLIC
     lemon::lemon
     Timekeeper::libTimekeeper
     )
-if (TARGET Blossom5::Blossom5)
+if (HAVE_BLOSSOM5)
     target_link_libraries(satsuma PUBLIC Blossom5::Blossom5)
 endif()
 
