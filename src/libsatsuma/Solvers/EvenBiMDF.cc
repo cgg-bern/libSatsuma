@@ -10,12 +10,12 @@ namespace Satsuma {
 
 /// return cheapest +/- 1 adjusted target length and the cost of the change
 static
-std::pair<BiMDF::TargetScalar, BiMDF::CostScalar>
+std::pair<BiMDF::FlowScalar, BiMDF::CostScalar>
 find_best_adjustment(BiMDF const&_bimdf, BiMDF::Edge e, BiMDF::TargetScalar initial)
 {
     const auto lower = _bimdf.lower[e];
     const auto upper = _bimdf.upper[e];
-    auto guess = static_cast<BiMDF::FlowScalar>(initial);
+    auto guess = std::lround(initial);
     if (guess < lower) {
         guess = lower;
     }
