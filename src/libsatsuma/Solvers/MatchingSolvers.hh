@@ -7,6 +7,6 @@ namespace Satsuma {
 enum class MatchingSolver {
     Lemon,
     BlossomV,
-    Default = BlossomV // always available
+    Default = Lemon // always available
 };
 } // namespace Satsuma
