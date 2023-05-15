@@ -15,7 +15,7 @@ find_best_adjustment(BiMDF const&_bimdf, BiMDF::Edge e, BiMDF::TargetScalar init
 {
     const auto lower = _bimdf.lower[e];
     const auto upper = _bimdf.upper[e];
-    auto guess = initial;
+    auto guess = static_cast<BiMDF::FlowScalar>(initial);
     if (guess < lower) {
         guess = lower;
     }
