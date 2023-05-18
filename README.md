@@ -2,16 +2,51 @@
 
 ## Introduction
 
-Satsuma extends the LEMON graph library by data structures and algorithms
-for handling network flow problems on general bidirected graphs.
+Project page: https://www.algohex.eu/publications/bimdf-quantization/
+
+**Satsuma extends the LEMON graph library by data structures and algorithms
+for handling network flow problems on general bidirected graphs.**
+
+Most importantly, it solves the *Minimum Deviation Flow* problem in bidirected
+graphs (*Bi-MDF*) -- a generalization of the *Minimum Cost Flow* problem.
+We provide an approximate and an exact solver that utilized iterative refinement.
 
 You can find the necessary mathematical background and explanations in
 
-**Min-Deviation-Flow in Bi-directed Graphs for T-Mesh Quantization**, Martin Heistermann, Jethro Warnett, David Bommes, ACM Trans. Graph. 2023
+[**Min-Deviation-Flow in Bi-directed Graphs for T-Mesh Quantization**](https://www.algohex.eu/publications/bimdf-quantization/), **Martin Heistermann, Jethro Warnett, David Bommes**, ACM Transactions on Graphics, Volume 42, Issue 4, 2023
 
 Please cite our paper if you use this library in academic context :-)
 
-Project page: https://www.algohex.eu/publications/bimdf-quantization/
+## BibTeX
+```
+@article{Heistermann:2023:BiMDF,
+  author = {Heistermann, Martin and Warnett, Jethro and Bommes, David}
+  title = {Min-Deviation-Flow in Bi-directed Graphs for T-Mesh Quantization},
+  journal = {ACM Trans. Graph.},
+  volume = {42},
+  number = {4},
+  year = {2023},
+  publisher = {ACM},
+  address = {New York, NY, USA},
+  doi = {10.1145/3592437}
+}
+```
+
+## Minimum-Deviation-Flow Problem in Bidirected Graphs (Bi-MDF)
+
+Find $x\in \mathbb{Z}^n$ that minimizes $\displaystyle\sum_{1\leq i\leq n} c_i(x_i)$, such that
+
+* $C\cdot x = b$, where
+    * $b$ is the *demand* vector $b\in\mathbb{Z}^m$, and
+    * $C \in \\\{-2,-1,0,1,2\\\}^{m\times n}$ is the node-edge incidence matrix of a bidirected graph,
+      i.e., the sum of absolute values of each column of $C$ is not larger than 2,
+* $\forall i: l_i \leq x_i \leq u_i$, where
+    $l, u \in \mathbb{Z}^n$ are lower and upper bounds (upper bounds may be infinite)
+
+$c_i: \mathbb{Z}\to\mathbb{R}$ are convex cost functions.
+Cost functions $c_i$ with $u_i=\infty$ must attain a minimal value in the interval $[l_i, \infty)$, e.g., $1/x$ would only be allowed with a finite upper bound.
+
+
 
 
 ## Project structure
@@ -110,22 +145,8 @@ libSatsuma is available under the terms of the [MIT License](LICENSE).
 
 ## Contact
 
-I'm be happy to receive feedback from you via github issues or email.
+I'd be happy to receive any feedback from you via github issues or email.
 Please let me know if you have any issues compiling or using libSatsuma.
 
 Author: Martin Heistermann <martin.heistermann@unibe.ch>
 
-## BibTeX
-```
-@article{Heistermann:2023:BiMDF,
-  author = {Heistermann, Martin and Warnett, Jethro and Bommes, David}
-  title = {Min-Deviation-Flow in Bi-directed Graphs for T-Mesh Quantization},
-  journal = {ACM Trans. Graph.},
-  volume = {42},
-  number = {2},
-  year = {2023},
-  publisher = {ACM},
-  address = {New York, NY, USA},
-  doi = {10.1145/3592437}
-}
-```
