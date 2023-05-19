@@ -150,3 +150,7 @@ Please let me know if you have any issues compiling or using libSatsuma.
 
 Author: Martin Heistermann <martin.heistermann@unibe.ch>
 
+
+## Acknowledgements
+
+This project has been developed as part of the [AlgoHex](https://www.algohex.eu/) project, which has received funding from the European Research Council (ERC) under the European Union’s Horizon 2020 research and innovation programme ([Grant agreement No. 853343](https://cordis.europa.eu/project/id/853343)).
