@@ -121,6 +121,7 @@ Our recommended approach is using `add_subdirectory` on a sub-folder (possibly g
 or automatically downloading libSatsuma:
 
 ```
+include(FetchContent)
 if (NOT TARGET satsuma::satsuma)
     FetchContent_Declare(satsuma
         GIT_REPOSITORY https://github.com/cgg-bern/libsatsuma
@@ -132,7 +133,14 @@ endif()
 ```
 
 libSatsuma will now be available as a target `satsuma::satsuma`, which you can link to your program using
-```target_link_libraries(your_target PRIVATE satsuma::satsuma```.
+
+```
+target_link_libraries(your_target PRIVATE satsuma::satsuma)
+```.
+
+## Acknowledgements
+
+This project has been developed as part of the [AlgoHex](https://www.algohex.eu/) project, which has received funding from the European Research Council (ERC) under the European Union’s Horizon 2020 research and innovation programme ([Grant agreement No. 853343](https://cordis.europa.eu/project/id/853343)).
 
 By default, libSatsuma is built as static library. You can set the global
 [BUILD_SHARED_LIBS](https://cmake.org/cmake/help/latest/variable/BUILD_SHARED_LIBS.html)
