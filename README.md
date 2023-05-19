@@ -108,7 +108,7 @@ This will automatically download all required dependencies and compile libSatsum
 
 You can now run the example program
 ```
-./build/tools/example/example`
+./build/tools/example/example
 ```
 (The path may differ depending on the CMake generator used)
 
@@ -136,7 +136,7 @@ libSatsuma will now be available as a target `satsuma::satsuma`, which you can l
 
 ```
 target_link_libraries(your_target PRIVATE satsuma::satsuma)
-```.
+```
 
 ## Acknowledgements
 
