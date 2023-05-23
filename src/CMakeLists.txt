@@ -51,6 +51,7 @@ add_library(satsuma
     ./libsatsuma/Reductions/BMatching_to_Matching.cc
     ./libsatsuma/Reductions/BiMDF_to_BiMCF.cc
     ./libsatsuma/Reductions/BiMDF_Simplification.cc
+    ./libsatsuma/Reductions/OrientableBiMCF_to_MCF.cc
     ./libsatsuma/Solvers/BiMDFDoubleCover.cc
     ./libsatsuma/Solvers/BiMDFGuess.cc
     ./libsatsuma/Solvers/BiMDFRefinement.cc
@@ -58,6 +59,7 @@ add_library(satsuma
     ./libsatsuma/Solvers/Matching.cc
     ./libsatsuma/Solvers/MCF.cc
     ./libsatsuma/Solvers/TJoinMST.cc
+    ./libsatsuma/Solvers/OrientBinet.cc
     )
 add_library(satsuma::satsuma ALIAS satsuma)
 

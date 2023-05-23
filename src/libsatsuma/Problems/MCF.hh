@@ -18,13 +18,16 @@ struct MCF
     using FlowScalar = int;
 
     GraphT g;
-    NodeMap<FlowScalar> supply {g}; // TODO: globally use either supply or demand!
+    NodeMap<FlowScalar> supply {g}; // TODO: globally use either supply or demand! lemon uses supply.
     ArcMap<CostScalar> cost {g};
     ArcMap<FlowScalar> upper {g};
-    // assume lower==0
+    ArcMap<FlowScalar> lower {g}; // TODO: WARNING: ignored for regular BiMDF pipeline and assumed to be 0!
     using Solution = ArcMap<FlowScalar>;
 
     CostScalar compute_cost(Solution const& sol) const;
+
+    FlowScalar inflow(Node n, MCF::Solution const&sol) const;
+    FlowScalar outflow(Node n, MCF::Solution const&sol) const;
 };
 
 struct MCFResult {

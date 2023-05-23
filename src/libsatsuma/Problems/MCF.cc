@@ -14,4 +14,22 @@ MCF::CostScalar MCF::compute_cost(const Solution &sol) const
     return sum;
 }
 
+MCF::FlowScalar MCF::inflow(MCF::Node n, MCF::Solution const&sol) const
+{
+    FlowScalar sum = 0;
+    for (const auto a: g.inArcs(n)) {
+        sum += sol[a];
+    }
+    return sum;
+}
+
+MCF::FlowScalar MCF::outflow(MCF::Node n, MCF::Solution const&sol) const
+{
+    FlowScalar sum = 0;
+    for (const auto a: g.outArcs(n)) {
+        sum += sol[a];
+    }
+    return sum;
+}
+
 } // namespace Satsuma

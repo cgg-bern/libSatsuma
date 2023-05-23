@@ -13,6 +13,7 @@ MCFResult solve_mcf_via_lemon_netsimp(const MCF &mcf)
     solver.costMap(mcf.cost);
     solver.supplyMap(mcf.supply);
     solver.upperMap(mcf.upper);
+    solver.lowerMap(mcf.lower);
     auto res = solver.run();
     if (res == LemonSolver::INFEASIBLE) {
         throw InfeasibleError("netsimp: flow problem infeasible");

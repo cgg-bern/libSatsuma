@@ -33,12 +33,12 @@ struct BiMDF : public BiFlowGraph
         Node u, v;
         bool u_head, v_head;
         CostFunction::Function cost_function = CostFunction::Zero();
-        int lower = 0;
-        int upper = inf();
+        FlowScalar lower = 0;
+        FlowScalar upper = inf();
     };
 
 
-    inline Edge add_edge(EdgeInfo info)
+    inline Edge add_edge(EdgeInfo const &info)
     {
         auto e = BiFlowGraph::add_edge(info.u, info.v);
         u_head[e] = info.u_head;
