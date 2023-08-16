@@ -17,6 +17,11 @@ You can find the necessary mathematical background and explanations in
 
 Please cite our paper if you use this library in academic context :-)
 
+## Applications
+
+We demonstrate libSatsuma as an alternative to the commercial Gurobi solver in a recent quad remeshing (or *retopology*, in 3D artist parlance) tool, [QuadWild](https://www.quadmesh.cloud/), in our [fork of the code](https://github.com/cgg-bern/quadwild-bimdf/).
+
+
 ## BibTeX
 ```
 @article{Heistermann:2023:BiMDF,
