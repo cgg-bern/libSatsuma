@@ -74,24 +74,25 @@ BiMDF_Simplification::BiMDF_Simplification(const BiMDF &_orig)
         Node cur_n = _n;
         //std::cout << "extend_chain(e = " << g.id(_e) << ", n = " << g.id(_n) << ")" << std::endl;
         while (collapse_node[cur_n]) {
+            auto cur_a = g.direct(cur_e, cur_n);
             //std::cout << "\tcur_e = " << g.id(cur_e) << ", cur_n = " << g.id(cur_n) << std::endl;
-            for(const auto &other_e: g.outArcs(cur_n)) {
-                //std::cout << "\t\tother_e = " << g.id(other_e) << std::endl;
-                if (other_e == cur_e) {
+            for(const auto &other_a: g.outArcs(cur_n)) {
+                //std::cout << "\t\tother_e = " << g.id(other_a) << std::endl;
+                if (other_a == cur_a) {
                     continue;
                 } else {
-                    chain.push_back(other_e);
-                    const auto other_u = g.u(other_e);
-                    const auto other_v = g.v(other_e);
+                    chain.push_back(other_a);
+                    const auto other_u = g.u(other_a);
+                    const auto other_v = g.v(other_a);
                     //std::cout << "\t\t\tother_u = " << g.id(other_u) << std::endl;
                     //std::cout << "\t\t\tother_v = " << g.id(other_v) << std::endl;
                     assert(other_u == cur_n || other_v == cur_n);
                     cur_n = (cur_n == other_u) ? other_v : other_u;
 
-                    if(edge_added[other_e]) {
+                    if(edge_added[other_a]) {
                         throw std::runtime_error("this should not happen, found edge twice");
                     }
-                    cur_e = other_e;
+                    cur_e = other_a;
                     edge_added[cur_e] = true;
                     break; // disable for debug
                 }
