@@ -2,6 +2,7 @@
 #include <libsatsuma/Reductions/OrientableBiMCF_to_MCF.hh>
 #include <lemon/adaptors.h>
 #include <cmath>
+#include <cassert>
 
 namespace Satsuma {
 
