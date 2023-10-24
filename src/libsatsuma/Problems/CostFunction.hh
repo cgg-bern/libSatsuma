@@ -34,11 +34,11 @@ struct QuadDeviation {
 
 /// For VirtualObjective
 struct BaseObjective {
-    virtual ~BaseObjective() = default;
+    virtual ~BaseObjective();
     /// Evaluate f(x).
     virtual double operator()(double) const = 0;
     /// Get the minimum parameter value or another decent initial value.
-    virtual double get_guess() const;
+    virtual double get_guess() const = 0;
 };
 
 /// User-defined convex(!) cost functions

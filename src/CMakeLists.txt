@@ -42,6 +42,7 @@ add_library(satsuma
     ./libsatsuma/Extra/Highlevel.cc
     ./libsatsuma/Problems/BMatching.cc
     ./libsatsuma/Problems/MCF.cc
+    ./libsatsuma/Problems/CostFunction.cc
     ./libsatsuma/Problems/BiFlowGraph.cc
     ./libsatsuma/Problems/Matching.cc
     ./libsatsuma/Problems/BiMCF.cc
