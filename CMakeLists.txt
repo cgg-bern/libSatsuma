@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.18 FATAL_ERROR)
 cmake_policy(VERSION 3.18.0)
 
 project (satsuma
-    VERSION 0.0.1
+    VERSION 0.0.2
     LANGUAGES C CXX
     )
 
