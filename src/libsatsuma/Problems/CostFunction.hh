@@ -67,7 +67,7 @@ struct Sum {
             }
             auto g = Satsuma::CostFunction::get_guess(*it);
             min_guess = std::min(min_guess, g);
-            max_guess = std::max(min_guess, g);
+            max_guess = std::max(max_guess, g);
             // ensure a flat list of components:
             if (auto sump = std::get_if<Sum>(&*it)) {
                 std::copy(sump->begin(), sump->end(), std::back_inserter(components_));
