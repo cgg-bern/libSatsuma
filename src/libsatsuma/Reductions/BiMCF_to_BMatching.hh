@@ -10,7 +10,7 @@ namespace Satsuma {
 enum class DeviationLimitKind {
     EdgeFlow,
     NodeThroughflow,
-    Default = EdgeFlow
+    Default = NodeThroughflow
 };
 
 class BiMCF_to_BMatching
