@@ -74,11 +74,10 @@ BiMDF_Simplification::BiMDF_Simplification(const BiMDF &_orig)
         Node cur_n = _n;
         //std::cout << "extend_chain(e = " << g.id(_e) << ", n = " << g.id(_n) << ")" << std::endl;
         while (collapse_node[cur_n]) {
-            auto cur_a = g.direct(cur_e, cur_n);
             //std::cout << "\tcur_e = " << g.id(cur_e) << ", cur_n = " << g.id(cur_n) << std::endl;
             for(const auto &other_a: g.outArcs(cur_n)) {
                 //std::cout << "\t\tother_e = " << g.id(other_a) << std::endl;
-                if (other_a == cur_a) {
+                if (Edge(other_a) == cur_e) {
                     continue;
                 } else {
                     chain.push_back(other_a);
@@ -89,10 +88,10 @@ BiMDF_Simplification::BiMDF_Simplification(const BiMDF &_orig)
                     assert(other_u == cur_n || other_v == cur_n);
                     cur_n = (cur_n == other_u) ? other_v : other_u;
 
-                    if(edge_added[other_a]) {
+                    cur_e = other_a;
+                    if(edge_added[cur_e]) {
                         throw std::runtime_error("this should not happen, found edge twice");
                     }
-                    cur_e = other_a;
                     edge_added[cur_e] = true;
                     break; // disable for debug
                 }
