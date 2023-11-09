@@ -143,6 +143,7 @@ BiMDFFullResult solve_bimdf(const BiMDF &_bimdf, const BiMDFSolverConfig &_confi
     // TODO: parallel solve? are both matching solvers sufficiently thread-safe? is it worth the overhead?
     for (const auto &sub_bimdf: cc.bimdfs()) {
         sw_simp.resume();
+#if 1
         Satsuma::BiMDF_Simplification simp(sub_bimdf);
         sw_simp.stop();
         auto simp_sol = Satsuma::solve_bimdf_matching(simp.bimdf(), _config);
@@ -158,6 +159,9 @@ BiMDFFullResult solve_bimdf(const BiMDF &_bimdf, const BiMDFSolverConfig &_confi
         sw_simp.resume();
         auto bimdf_result = simp.translate_solution(simp_sol.result);
         sw_simp.stop();
+#else
+        auto bimdf_result = Satsuma::solve_bimdf_matching(sub_bimdf).result;
+#endif
 
         //auto bimdf_sol = Satsuma::solve_bimdf_matching(sub_bimdf, 2, 2, Satsuma::MatchingSolver::BlossomV, 5);
         //std::cout << "full solved sub- BiMDF, cost = " << sub_bimdf.cost(*bimdf_sol.solution) << std::endl;
