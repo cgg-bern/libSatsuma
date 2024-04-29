@@ -45,7 +45,7 @@ void write_bimdf(BiMDF const&_bimdf, std::string const &filename)
             // TODO: if we ever need this, have user supply custom serializer
             throw std::runtime_error("Satsuma::write_bimdf: Saving virtual cost functions is not supported.");
         } else if (std::holds_alternative<CostFunction::Sum>(cost_func)) {
-            throw std::runtime_error("Satsuma::write_bimdf: Saving 'Sum' functions is not supported.'Sum' ");
+            throw std::runtime_error("Satsuma::write_bimdf: Saving 'Sum' functions is not supported.");
         }
         s << "\n";
     }

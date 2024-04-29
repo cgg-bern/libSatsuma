@@ -6,6 +6,6 @@
 
 namespace Satsuma {
 
-std::unique_ptr<BiMDF> read_bimdf(std::string const &filename);
+std::unique_ptr<BiMDF> read_bimdf(std::string const &filename, bool verbose=false);
 
 } // namespace Satsuma

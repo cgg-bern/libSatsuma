@@ -6,9 +6,8 @@
 
 namespace Satsuma {
 
-std::unique_ptr<BiMDF> read_bimdf(std::string const &filename)
+std::unique_ptr<BiMDF> read_bimdf(std::string const &filename, bool verbose)
 {
-    const bool verbose = true; // TODO
     std::fstream s(filename);
     if (!s.good()) {
         throw std::runtime_error("Satsuma::read_bimdf: cannot open file for reading.");
@@ -16,7 +15,7 @@ std::unique_ptr<BiMDF> read_bimdf(std::string const &filename)
     std::string comment;
     std::getline(s, comment);
     if (verbose) {
-        std::cout << "comment " << comment << std::endl;
+        std::cout << "Reading BiMDF, file comment " << comment << std::endl;
     }
     auto bimdf_p = std::make_unique<BiMDF>();
     auto &bimdf = *bimdf_p;
@@ -30,9 +29,6 @@ std::unique_ptr<BiMDF> read_bimdf(std::string const &filename)
     for (size_t node_id = 0; node_id < n_nodes; ++node_id) {
         int demand;
         s >> demand;
-        if (verbose) {
-            std::cout << "node demand " << demand << std::endl;
-        }
         auto n = bimdf.add_node(demand);
         assert(g.id(n) == node_id);
     }
@@ -73,8 +69,9 @@ std::unique_ptr<BiMDF> read_bimdf(std::string const &filename)
         auto e = bimdf.add_edge(ei);
         assert(g.id(e) == edge_id);
     }
-    std::cout << "good? " << s.good() << std::endl;
-    std::cout << "eof? " << s.eof() << std::endl;
+    if (!s.good()) {
+        throw std::runtime_error("Satsuma::read_bimdf: file went bad, maybe truncated?");
+    }
     return bimdf_p;
 }
 
