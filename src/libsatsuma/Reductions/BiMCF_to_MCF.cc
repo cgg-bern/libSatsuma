@@ -18,7 +18,7 @@ BiMCF_to_MCF::BiMCF_to_MCF(const BiMCF &_bimcf,
     for (const auto e: _bimcf.g.edges()) {
         abs_cost_sum += std::fabs(_bimcf.cost[e]);
     }
-    if (abs_cost_sum > 1LL<<24) { // conservative guess
+    if (abs_cost_sum > 1LL<<40) { // conservative guess
         throw std::runtime_error("BiMCF_to_MCF: costs too high");
     }
 
