@@ -61,6 +61,8 @@ add_library(satsuma
     ./libsatsuma/Solvers/MCF.cc
     ./libsatsuma/Solvers/TJoinMST.cc
     ./libsatsuma/Solvers/OrientBinet.cc
+    ./libsatsuma/IO/read_bimdf.cc
+    ./libsatsuma/IO/write_bimdf.cc
     )
 add_library(satsuma::satsuma ALIAS satsuma)
 
