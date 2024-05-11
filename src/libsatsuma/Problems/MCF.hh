@@ -17,6 +17,8 @@ struct MCF
     using CostScalar = int64_t;
     using FlowScalar = int;
 
+    static FlowScalar inf() {return std::numeric_limits<FlowScalar>::max();}
+
     GraphT g;
     NodeMap<FlowScalar> supply {g}; // TODO: globally use either supply or demand! lemon uses supply.
     ArcMap<CostScalar> cost {g};
@@ -28,6 +30,27 @@ struct MCF
 
     FlowScalar inflow(Node n, MCF::Solution const&sol) const;
     FlowScalar outflow(Node n, MCF::Solution const&sol) const;
+
+    inline Node add_node(FlowScalar _supply) {
+        auto nh = g.addNode();
+        supply[nh] = _supply;
+        return nh;
+    }
+
+    struct ArcInfo {
+        Node u, v;
+        CostScalar cost = 0;
+        FlowScalar lower = 0;
+        FlowScalar upper = inf();
+    };
+
+    inline Arc add_edge(ArcInfo const &info) {
+        auto arc = g.addArc(info.u, info.v);
+        cost[arc] = info.cost;
+        upper[arc] = info.upper;
+        lower[arc] = info.lower;
+        return arc;
+    }
 };
 
 struct MCFResult {
