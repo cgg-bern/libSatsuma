@@ -31,6 +31,18 @@ struct QuadDeviation {
     double operator()(double l ) const {return weight * (l-target)*(l-target);}
     double get_guess() const {return target;}
 };
+/// f(x) = weight * max((x+eps)/(target+eps), (target+eps)/(x+eps))
+struct ScaleFactor {
+    double target;
+    double weight;
+    double eps = 0.1;
+    double operator()(double l ) const {
+        auto adj_tgt = target+eps;
+        auto adj_l = l+eps;
+        return weight * std::max(adj_l/adj_tgt, adj_tgt/adj_l);
+    }
+    double get_guess() const {return target;}
+};
 
 /// For VirtualObjective
 struct BaseObjective {
@@ -51,7 +63,7 @@ struct VirtualObjective {
 
 struct Sum;
 //using BasicFunction = std::variant<Zero, AbsDeviation, QuadDeviation, VirtualObjective>;
-using Function = std::variant<Zero, AbsDeviation, QuadDeviation, VirtualObjective, Sum>;
+using Function = std::variant<Zero, AbsDeviation, QuadDeviation, ScaleFactor, VirtualObjective, Sum>;
 double cost(Function const&f, double _l);
 double get_guess(Function const&f);
 
