@@ -3,6 +3,7 @@
 #pragma once
 
 #include <lemon/list_graph.h>
+#include <limits>
 
 namespace Satsuma {
 
