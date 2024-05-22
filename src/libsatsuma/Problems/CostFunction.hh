@@ -6,6 +6,7 @@
 #include <variant>
 #include <memory>
 #include <vector>
+#include <iterator>
 
 
 namespace Satsuma::CostFunction {
