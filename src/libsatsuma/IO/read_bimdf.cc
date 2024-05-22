@@ -63,6 +63,13 @@ std::unique_ptr<BiMDF> read_bimdf(std::string const &filename, bool verbose)
             double target, weight;
             s >> target >> weight;
             ei.cost_function = CostFunction::QuadDeviation({.target = target, .weight = weight});
+        } else if (cost_type == 'S') {
+            double target, weight, eps;
+            s >> target >> weight >> eps;
+            ei.cost_function = CostFunction::ScaleFactor({
+                    .target = target,
+                    .weight = weight,
+                    .eps = eps});
         } else {
             throw std::runtime_error(std::string("Satsuma::read_bimdf: unknown cost type '") + cost_type + "'");
         }

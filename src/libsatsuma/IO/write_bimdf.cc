@@ -41,11 +41,17 @@ void write_bimdf(BiMDF const&_bimdf, std::string const &filename)
             s << "A " << cost_absdev->target << " " << cost_absdev->weight;
         } else if (auto cost_quaddev = std::get_if<CostFunction::QuadDeviation>(&cost_func)) {
             s << "Q " << cost_quaddev->target << " " << cost_quaddev->weight;
+        } else if (auto cost_sf = std::get_if<CostFunction::ScaleFactor>(&cost_func)) {
+            s << "S " << cost_sf->target
+                << " " << cost_sf->weight
+                << " " << cost_sf->eps;
         } else if (std::holds_alternative<CostFunction::VirtualObjective>(cost_func)) {
             // TODO: if we ever need this, have user supply custom serializer
             throw std::runtime_error("Satsuma::write_bimdf: Saving virtual cost functions is not supported.");
         } else if (std::holds_alternative<CostFunction::Sum>(cost_func)) {
             throw std::runtime_error("Satsuma::write_bimdf: Saving 'Sum' functions is not supported.");
+        } else {
+            throw std::runtime_error("Satsuma::write_bimdf: cost function type not handled.");
         }
         s << "\n";
     }
