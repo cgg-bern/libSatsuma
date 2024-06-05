@@ -6,6 +6,42 @@
 
 namespace Satsuma {
 
+
+static CostFunction::Function read_cost(std::istream &s)
+{
+    char cost_type;
+    s >> cost_type;
+    if (cost_type == '0') {
+        return  CostFunction::Zero();
+    } else if (cost_type == 'A') {
+        double target, weight;
+        s >> target >> weight;
+        return  CostFunction::AbsDeviation({.target = target, .weight = weight});
+    } else if (cost_type == 'Q') {
+        double target, weight;
+        s >> target >> weight;
+        return  CostFunction::QuadDeviation({.target = target, .weight = weight});
+    } else if (cost_type == 'S') {
+        double target, weight, eps;
+        s >> target >> weight >> eps;
+        return  CostFunction::ScaleFactor({
+                .target = target,
+                .weight = weight,
+                .eps = eps});
+    } else if (cost_type == '+') {
+        size_t count;
+        double target, weight, eps;
+        s >> count;
+        std::vector<CostFunction::Function> cfs;
+        for (size_t i = 0; i < count; ++i) {
+            cfs.push_back(read_cost(s));
+        }
+        return  CostFunction::Sum(cfs.begin(), cfs.end());
+    } else {
+        throw std::runtime_error(std::string("Satsuma::read_bimdf: unknown cost type '") + cost_type + "'");
+    }
+}
+
 std::unique_ptr<BiMDF> read_bimdf(std::string const &filename, bool verbose)
 {
     std::fstream s(filename);
@@ -51,28 +87,7 @@ std::unique_ptr<BiMDF> read_bimdf(std::string const &filename, bool verbose)
         s >> ei.u_head >> ei.v_head;
         s >> ei.lower >> ei.upper;
 
-        char cost_type;
-        s >> cost_type;
-        if (cost_type == '0') {
-            ei.cost_function = CostFunction::Zero();
-        } else if (cost_type == 'A') {
-            double target, weight;
-            s >> target >> weight;
-            ei.cost_function = CostFunction::AbsDeviation({.target = target, .weight = weight});
-        } else if (cost_type == 'Q') {
-            double target, weight;
-            s >> target >> weight;
-            ei.cost_function = CostFunction::QuadDeviation({.target = target, .weight = weight});
-        } else if (cost_type == 'S') {
-            double target, weight, eps;
-            s >> target >> weight >> eps;
-            ei.cost_function = CostFunction::ScaleFactor({
-                    .target = target,
-                    .weight = weight,
-                    .eps = eps});
-        } else {
-            throw std::runtime_error(std::string("Satsuma::read_bimdf: unknown cost type '") + cost_type + "'");
-        }
+        ei.cost_function = read_cost(s);
         auto e = bimdf.add_edge(ei);
         assert(g.id(e) == edge_id);
     }

@@ -113,6 +113,7 @@ struct Sum {
     double get_guess() const {return guess_;};
     auto begin() const {return components_.cbegin();}
     auto end() const {return components_.end();}
+    size_t size() const {return components_.size();}
 private:
     std::vector<Function> components_;
     double guess_ = 0.;
