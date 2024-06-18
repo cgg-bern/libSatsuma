@@ -57,10 +57,10 @@ BiMDFResult solve_bimdf_gurobi(BiMDF const &bimdf, bool int_targets, BiMDF::Gues
                 const auto target = f->target;
                 if (int_targets) {
                     if (x0) {
-                        slack.set(GRB_DoubleAttr_Start, std::fabs((*x0)[e] - std::lround(target)));
+                        slack.set(GRB_DoubleAttr_Start, std::fabs((*x0)[e] - std::llround(target)));
                     }
-                    model.addConstr(slack, GRB_GREATER_EQUAL, ev - std::lround(target));
-                    model.addConstr(slack, GRB_GREATER_EQUAL, std::lround(target) - ev);
+                    model.addConstr(slack, GRB_GREATER_EQUAL, ev - std::llround(target));
+                    model.addConstr(slack, GRB_GREATER_EQUAL, std::llround(target) - ev);
                 } else {
                     if (x0) {
                         slack.set(GRB_DoubleAttr_Start, std::fabs((*x0)[e] - target));
@@ -111,7 +111,7 @@ BiMDFResult solve_bimdf_gurobi(BiMDF const &bimdf, bool int_targets, BiMDF::Gues
         // save results
         for (const auto e: g.edges()) {
             auto &ev = edge_var(e);
-            sol[e] = std::lround(ev.get(GRB_DoubleAttr_X));
+            sol[e] = std::llround(ev.get(GRB_DoubleAttr_X));
         }
 
         return {.solution = std::move(solp)};

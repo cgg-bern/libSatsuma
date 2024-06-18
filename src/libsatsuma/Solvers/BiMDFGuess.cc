@@ -13,8 +13,8 @@ std::unique_ptr<BiMDF::Guess> make_guess(const BiMDF &bimdf)
     {
         auto target = bimdf.guess(e);
 
-        auto floor = static_cast<BiMDF::FlowScalar>(std::lround(std::floor(target)));
-        auto ceil = static_cast<BiMDF::FlowScalar>(std::lround(std::ceil(target)));
+        auto floor = static_cast<BiMDF::FlowScalar>(std::llround(std::floor(target)));
+        auto ceil = static_cast<BiMDF::FlowScalar>(std::llround(std::ceil(target)));
         floor = std::max(floor, bimdf.lower[e]);
         ceil = std::min(floor, bimdf.upper[e]);
         if(floor > ceil) {

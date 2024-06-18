@@ -89,7 +89,7 @@ BMatching_to_Matching::BMatching_to_Matching(const BMatching &_bmatching,
         auto demand_u = bmatching_.degree[u];
         auto demand_v = bmatching_.degree[v];
         auto cap = bmatching_.capacity[bmp_edge];
-        Matching::CostScalar weight = std::lround(costmul_ * bmatching_.weight[bmp_edge]);
+        Matching::CostScalar weight = std::llround(costmul_ * bmatching_.weight[bmp_edge]);
 
 #if 0
         std::cout << "\tconnecting "

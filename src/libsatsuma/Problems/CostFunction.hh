@@ -93,8 +93,8 @@ struct Sum {
         //       For now, assume the range is small enough that it does not matter.
         auto best_cost = std::numeric_limits<double>::infinity();
         auto last_cost = std::numeric_limits<double>::infinity();
-        for (auto g = std::lround(std::floor(min_guess));
-             g < std::lround(std::ceil(max_guess));
+        for (auto g = std::llround(std::floor(min_guess));
+             g < std::llround(std::ceil(max_guess));
              ++g)
         {
             auto c = (*this)(g);

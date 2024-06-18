@@ -43,7 +43,7 @@ OrientedBiMCF::OrientedBiMCF(BiMCF const &_bimcf, Orientation const &ori)
         assert(mcf_.g.id(new_e) == i);
         mcf_.upper[new_e] = bimcf_.upper[e];
         mcf_.lower[new_e] = bimcf_.lower[e];
-        mcf_.cost[new_e] = std::lround(bimcf_.cost[e]*costmul_);
+        mcf_.cost[new_e] = std::llround(bimcf_.cost[e]*costmul_);
     }
 }
 BiMCFResult OrientedBiMCF::translate_solution(const MCFResult &mcf_result) const

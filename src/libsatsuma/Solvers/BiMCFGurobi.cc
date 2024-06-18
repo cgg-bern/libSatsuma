@@ -65,7 +65,7 @@ BiMCFResult solve_bimcf_gurobi(BiMCF const &bimdf, BiMCF::Guess *x0)
         // save results
         for (const auto e: g.edges()) {
             auto &ev = edge_var(e);
-            sol[e] = std::lround(ev.get(GRB_DoubleAttr_X));
+            sol[e] = std::llround(ev.get(GRB_DoubleAttr_X));
         }
 
         return {.solution = std::move(solp), .cost = obj};

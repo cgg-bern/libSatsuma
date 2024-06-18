@@ -15,7 +15,7 @@ find_best_adjustment(BiMDF const&_bimdf, BiMDF::Edge e, BiMDF::TargetScalar init
 {
     const auto lower = _bimdf.lower[e];
     const auto upper = _bimdf.upper[e];
-    auto guess = std::lround(initial);
+    auto guess = std::llround(initial);
     if (guess < lower) {
         guess = lower;
     }
@@ -59,7 +59,7 @@ EveningResult round_to_even(const BiMDF &bimdf)
     {
         const auto lower = bimdf.lower[e];
         const auto upper = bimdf.upper[e];
-        BiMDF::FlowScalar guess = std::lround(bimdf.guess(e));
+        BiMDF::FlowScalar guess = std::llround(bimdf.guess(e));
         if (guess < lower) {
             guess = lower;
         } else if (guess > upper) {
@@ -104,7 +104,7 @@ EveningResult TJoinBasedRounding::solve()
         // TODO: use find_best_adjustment
         auto lower = bimdf_.lower[e];
         auto upper = bimdf_.upper[e];
-        auto opti = std::lround(bimdf_.guess(e));
+        auto opti = std::llround(bimdf_.guess(e));
         auto rounded = opti;
         if (rounded < lower) {
             rounded = lower;
@@ -150,7 +150,7 @@ EveningResult TJoinBasedRounding::solve()
     for (const auto e: g.edges()) {
         if (sol[e]) {
             guess[e] = adjusted_guess_[e];
-            auto opti = std::lround(bimdf_.guess(e));
+            auto opti = std::llround(bimdf_.guess(e));
             cost += bimdf_.cost(e, guess[e]) - bimdf_.cost(e, opti);
             ++n_adjustments;
         }

@@ -115,7 +115,7 @@ BiMCF_to_MCF::BiMCF_to_MCF(const BiMCF &_bimcf,
         }
 #endif
         double scaled_cost = bimcf_.cost[bimcf_edge] * costmul_;
-        auto cost = static_cast<MCF::CostScalar>(std::lround(scaled_cost));
+        auto cost = static_cast<MCF::CostScalar>(std::llround(scaled_cost));
         if (mcf_u == mcf_v) {
           // special case self-loop to avoid double arcs - not necessary, just neat.
           // could be replaced by arc-combining postprocessing step.
