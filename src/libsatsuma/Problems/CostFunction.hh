@@ -94,7 +94,7 @@ struct Sum {
         auto best_cost = std::numeric_limits<double>::infinity();
         auto last_cost = std::numeric_limits<double>::infinity();
         for (auto g = std::llround(std::floor(min_guess));
-             g < std::llround(std::ceil(max_guess));
+             g <= std::llround(std::ceil(max_guess));
              ++g)
         {
             auto c = (*this)(g);
