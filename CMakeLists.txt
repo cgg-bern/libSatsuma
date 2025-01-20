@@ -32,7 +32,9 @@ set(FETCHCONTENT_QUIET OFF)
 set(EXTERNAL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/external")
 set(FETCHCONTENT_UPDATES_DISCONNECTED TRUE)
 
-if(STANDALONE_BUILD)
+option(SATSUMA_FETCH_DEPENDENCIES "Download missing external dependencies" OFF)
+
+if(STANDALONE_BUILD OR SATSUMA_FETCH_DEPENDENCIES)
     if (NOT TARGET lemon::lemon)
         FetchContent_Declare(
         lemon
@@ -61,8 +63,7 @@ if(STANDALONE_BUILD)
             GIT_TAG main
             SOURCE_DIR "${EXTERNAL_DIR}/timekeeper"
             )
-        FetchContent_Populate(timekeeper)
-        add_subdirectory("${timekeeper_SOURCE_DIR}/src")
+        FetchContent_MakeAvailable(timekeeper)
     endif()
 endif()
 
