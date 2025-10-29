@@ -66,6 +66,21 @@ add_library(satsuma
     )
 add_library(satsuma::satsuma ALIAS satsuma)
 
+include(GenerateExportHeader)
+generate_export_header(satsuma
+    BASE_NAME SATSUMA
+    EXPORT_FILE_NAME "libsatsuma/Config/Export.hh"
+)
+
+set_target_properties (satsuma PROPERTIES
+    VERSION ${libsatsuma_VERSION_MAJOR}.${libsatsuma_VERSION_MINOR}
+    SOVERSION ${libsatsuma_VERSION_MAJOR}.${libsatsuma_VERSION_MINOR}
+    POSITION_INDEPENDENT_CODE ON
+    CXX_VISIBILITY_PRESET hidden
+    VISIBILITY_INLINES_HIDDEN TRUE
+    )
+
+
 target_link_libraries(satsuma PUBLIC
     lemon::lemon
     Timekeeper::libTimekeeper

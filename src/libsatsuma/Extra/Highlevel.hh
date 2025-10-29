@@ -9,6 +9,7 @@
 #include <libsatsuma/Reductions/BiMDF_to_BiMCF.hh>
 #include <libsatsuma/Reductions/BiMCF_to_MCF.hh>
 #include <libsatsuma/Reductions/BiMCF_to_BMatching.hh>
+#include <libsatsuma/Config/Export.hh>
 #if SATSUMA_HAVE_GUROBI
 #include <libsatsuma/Config/Gurobi.hh>
 #endif
@@ -46,6 +47,7 @@ struct BiMDFSolverConfig {
 };
 
 
+SATSUMA_EXPORT
 BiMDFMatchingResult solve_bimdf_matching(
         const BiMDF &bimdf,
         BiMDFSolverConfig const& _config = BiMDFSolverConfig());
@@ -67,6 +69,7 @@ struct BiMDFFullResult {
 
 /// Solve BiMDF by solving each connected component separately, applying
 /// simplification on each one
+SATSUMA_EXPORT
 BiMDFFullResult solve_bimdf(const Satsuma::BiMDF &_bimdf,
                             BiMDFSolverConfig const &_config = BiMDFSolverConfig());
 
