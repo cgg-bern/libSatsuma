@@ -15,7 +15,7 @@ find_best_adjustment(BiMDF const&_bimdf, BiMDF::Edge e, BiMDF::TargetScalar init
 {
     const auto lower = _bimdf.lower[e];
     const auto upper = _bimdf.upper[e];
-    auto guess = std::llround(initial);
+    auto guess = static_cast<BiMDF::FlowScalar>(std::llround(initial));
     if (guess < lower) {
         guess = lower;
     }
@@ -23,7 +23,7 @@ find_best_adjustment(BiMDF const&_bimdf, BiMDF::Edge e, BiMDF::TargetScalar init
         guess = upper;
     }
     const auto base_cost = _bimdf.cost(e, guess);
-    auto best_cost = std::numeric_limits<double>::infinity();
+    auto best_cost = std::numeric_limits<BiMDF::CostScalar>::infinity();
     auto best_guess = guess;
     for (int adj = -1; adj<=1; adj+=2)
     {
