@@ -52,7 +52,7 @@ public:
         }
 #endif
         bool is_bidir = (bg_.u_head[a] == bg_.v_head[a]);
-        if ((ori_[tgt] ^ ori_[src]) != is_bidir) {
+        if (bool(ori_[tgt] ^ ori_[src]) != is_bidir) {
             // TODO: there should be a better way to abort.
             std::cout << " exam ";
             debug_print(a);
