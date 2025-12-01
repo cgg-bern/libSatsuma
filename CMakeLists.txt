@@ -76,3 +76,12 @@ endif()
 if(${SATSUMA_ENABLE_TOOLS})
     add_subdirectory(tools)
 endif()
+
+
+install(TARGETS satsuma EXPORT SatsumaTargets)
+install(EXPORT SatsumaTargets
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/satsuma"
+    NAMESPACE satsuma::
+)
+
+
