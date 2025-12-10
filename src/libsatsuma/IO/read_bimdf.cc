@@ -30,7 +30,6 @@ static CostFunction::Function read_cost(std::istream &s)
                 .eps = eps});
     } else if (cost_type == '+') {
         size_t count;
-        double target, weight, eps;
         s >> count;
         std::vector<CostFunction::Function> cfs;
         for (size_t i = 0; i < count; ++i) {
