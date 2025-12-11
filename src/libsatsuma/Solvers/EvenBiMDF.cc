@@ -53,7 +53,7 @@ EveningResult round_to_even(const BiMDF &bimdf)
     auto guessp = std::make_unique<BiMDF::Guess>(bimdf.g);
 
     size_t n_adjustments = 0;
-    size_t n_bound_adjustments = 0;
+    //size_t n_bound_adjustments = 0;
     double cost = 0;
     for (const auto e: bimdf.g.edges())
     {
@@ -81,7 +81,7 @@ EveningResult round_to_even(const BiMDF &bimdf)
     return { .guess = std::move(guessp),
              .cost = cost,
              .n_adjustments = n_adjustments,
-             .n_bound_adjustments = 0 // TODO?
+             .n_bound_adjustments = 0 // TODO: How to handle bounds that do not contain an even number?
     };
 }
 

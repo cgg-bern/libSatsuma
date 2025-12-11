@@ -23,9 +23,9 @@ BiMDF_to_BiMCF::BiMDF_to_BiMCF(const BiMDF &_bimdf, Config const& _config)
     if (_config.out_orig_node) {
         *_config.out_orig_node = std::make_unique<BiMCF::NodeMap<BiMDF::Node>>(bimcf_.g);
     }
+#if 0
     const auto n_nodes = bimdf_.g.maxNodeId() + 1;
     const auto n_edges = bimdf_.g.maxEdgeId() + 1;
-#if 0
     // TODO: update the sizes to reserve
     bimcf_.g.reserveNode(n_nodes);
     switch(objective)
@@ -42,7 +42,7 @@ BiMDF_to_BiMCF::BiMDF_to_BiMCF(const BiMDF &_bimdf, Config const& _config)
 #endif
 
 
-    for (auto &n: bimdf_.g.nodes())
+    for (auto &_: bimdf_.g.nodes())
     {
         auto mcf_node = bimcf_.g.addNode();
         if (_config.out_orig_node) {

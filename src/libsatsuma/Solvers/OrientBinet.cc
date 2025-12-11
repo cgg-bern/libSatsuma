@@ -23,7 +23,7 @@ public:
     {}
     void discover(Arc const &a)
     {
-        auto e = Edge{a};
+        //auto e = Edge{a};
         auto src = bg_.g.source(a);
         auto tgt = bg_.g.target(a);
 #if 0
@@ -42,7 +42,7 @@ public:
     }
     void examine(Arc const &a)
     {
-        auto e = Edge{a};
+        //auto e = Edge{a};
         auto src = bg_.g.source(a);
         auto tgt = bg_.g.target(a);
 #if 0
@@ -84,7 +84,6 @@ private:
 std::unique_ptr<Orientation> try_orient(BidirectedGraph const &bg)
 {
     auto ori = std::make_unique<Orientation>(bg.g, true);
-    auto &g = bg.g;
     auto vis = detail::OrientVisitor<BidirectedGraph::GraphT>{bg, *ori};
     auto dfs = lemon::DfsVisit<BidirectedGraph::GraphT, decltype(vis)>(bg.g, vis);
     try {

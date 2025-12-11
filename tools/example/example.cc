@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
     };
     auto result = Satsuma::solve_bimdf(bimdf, config);
     std::cout << "Total cost: " << result.cost << std::endl;
-    for (const auto [name, edge]: edges) {
+    for (const auto& [name, edge]: edges) {
         std::cout << "Flow on " << name << ": " << (*result.solution)[edge] << std::endl;
 
     }

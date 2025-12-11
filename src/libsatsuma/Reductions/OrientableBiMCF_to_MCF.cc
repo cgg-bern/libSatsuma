@@ -51,7 +51,6 @@ BiMCFResult OrientedBiMCF::translate_solution(const MCFResult &mcf_result) const
     auto bimcf_solp = std::make_unique<BiMCF::Solution>(bimcf_.g, 0);
     auto &bimcf_sol = *bimcf_solp;
     const auto &mcf_sol = *mcf_result.solution;
-    size_t n_arcs = bimcf_.g.maxEdgeId() + 1;
     BiMCF::FlowScalar max_flow = 0;
     for (const auto arc: mcf_.g.arcs()) {
         auto bimcf_e = orig_bimcf_edge_[arc];
