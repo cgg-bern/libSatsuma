@@ -2,6 +2,7 @@
 //  SPDX-License-Identifier: MIT
 #pragma once
 
+#include <libsatsuma/Config/Export.hh>
 #include <cmath>
 #include <variant>
 #include <memory>
@@ -11,14 +12,14 @@
 
 namespace Satsuma::CostFunction {
 
-struct Zero {
+struct SATSUMA_EXPORT Zero {
     double operator()(double) const {return 0.;}
     double get_guess() const {return guess;}
     double guess = 0.;
 };
 
 /// f(x) = weight * |x - target|
-struct AbsDeviation {
+struct SATSUMA_EXPORT AbsDeviation {
     double target;
     double weight;
     double operator()(double l ) const {return weight * std::fabs((l-target));}
@@ -26,14 +27,14 @@ struct AbsDeviation {
 };
 
 /// f(x) = weight * (x - target)^2
-struct QuadDeviation {
+struct SATSUMA_EXPORT QuadDeviation {
     double target;
     double weight;
     double operator()(double l ) const {return weight * (l-target)*(l-target);}
     double get_guess() const {return target;}
 };
 /// f(x) = weight * max((x+eps)/(target+eps), (target+eps)/(x+eps))
-struct ScaleFactor {
+struct SATSUMA_EXPORT ScaleFactor {
     double target;
     double weight;
     double eps = 0.1;
@@ -46,7 +47,7 @@ struct ScaleFactor {
 };
 
 /// For VirtualObjective
-struct BaseObjective {
+struct SATSUMA_EXPORT BaseObjective {
     virtual ~BaseObjective();
     /// Evaluate f(x).
     virtual double operator()(double) const = 0;
@@ -55,21 +56,21 @@ struct BaseObjective {
 };
 
 /// User-defined convex(!) cost functions
-struct VirtualObjective {
+struct SATSUMA_EXPORT VirtualObjective {
     double operator()(double l) const {return (*obj_)(l);}
     double get_guess() const {return obj_->get_guess();}
     /// shared_ptr so we can copy-assign this.
     std::shared_ptr<BaseObjective> obj_;
 };
 
-struct Sum;
+struct SATSUMA_EXPORT Sum;
 //using BasicFunction = std::variant<Zero, AbsDeviation, QuadDeviation, VirtualObjective>;
 using Function = std::variant<Zero, AbsDeviation, QuadDeviation, ScaleFactor, VirtualObjective, Sum>;
 double cost(Function const&f, double _l);
 double get_guess(Function const&f);
 
 /// Sum of other types of cost functions
-struct Sum {
+struct SATSUMA_EXPORT Sum {
     Sum(auto _begin, auto _end) {
         components_.reserve(std::distance(_begin, _end));
         auto min_guess = std::numeric_limits<double>::infinity();
