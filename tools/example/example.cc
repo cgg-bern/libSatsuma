@@ -48,8 +48,10 @@ int main(int argc, char *argv[])
 
     auto config = Satsuma::BiMDFSolverConfig {
         //.matching_solver = Satsuma::MatchingSolver::BlossomV
-        .matching_solver = Satsuma::MatchingSolver::Lemon
+        .matching_solver = Satsuma::MatchingSolver::Lemon,
+        .double_cover = Satsuma::BiMDFDoubleCoverConfig(),
     };
+
     auto result = Satsuma::solve_bimdf(bimdf, config);
     std::cout << "Total cost: " << result.cost << std::endl;
     for (const auto& [name, edge]: edges) {
