@@ -21,7 +21,7 @@ struct SATSUMA_EXPORT Zero {
 /// f(x) = weight * |x - target|
 struct SATSUMA_EXPORT AbsDeviation {
     double target;
-    double weight;
+    double weight = 1.0;
     double operator()(double l ) const {return weight * std::fabs((l-target));}
     double get_guess() const {return target;}
 };
@@ -29,14 +29,14 @@ struct SATSUMA_EXPORT AbsDeviation {
 /// f(x) = weight * (x - target)^2
 struct SATSUMA_EXPORT QuadDeviation {
     double target;
-    double weight;
+    double weight = 1.0;
     double operator()(double l ) const {return weight * (l-target)*(l-target);}
     double get_guess() const {return target;}
 };
 /// f(x) = weight * max((x+eps)/(target+eps), (target+eps)/(x+eps))
 struct SATSUMA_EXPORT ScaleFactor {
     double target;
-    double weight;
+    double weight = 1.0;
     double eps = 0.1;
     double operator()(double l ) const {
         auto adj_tgt = target+eps;
