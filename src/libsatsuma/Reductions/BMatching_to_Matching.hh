@@ -1,5 +1,6 @@
 //  SPDX-FileCopyrightText: 2023 Martin Heistermann <martin.heistermann@unibe.ch>
 //  SPDX-License-Identifier: MIT
+#include <libsatsuma/Config/Export.hh>
 #pragma once
 
 #include <libsatsuma/Problems/BMatching.hh>
@@ -7,7 +8,7 @@
 
 namespace Satsuma {
 
-class BMatching_to_Matching
+class SATSUMA_EXPORT BMatching_to_Matching
 {
 public:
     struct Config {

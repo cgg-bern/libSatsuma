@@ -2,6 +2,7 @@
 //  SPDX-License-Identifier: MIT
 #pragma once
 
+#include <libsatsuma/Config/Export.hh>
 #include <libsatsuma/Problems/BiFlowGraph.hh>
 #include <libsatsuma/Problems/CostFunction.hh>
 #include <memory>
@@ -12,7 +13,7 @@ namespace Satsuma {
 
 
 /// Minimum-deviation flow in bidirected graphs
-struct BiMDF : public BiFlowGraph
+struct SATSUMA_EXPORT BiMDF : public BiFlowGraph
 {
     using GraphT = BiFlowGraph::GraphT;
     using Node = BiFlowGraph::Node;
@@ -68,7 +69,7 @@ public:
     }
 };
 
-struct BiMDFResult {
+struct SATSUMA_EXPORT BiMDFResult {
     std::unique_ptr<BiMDF::Solution> solution;
     BiMDF::CostScalar cost = std::numeric_limits<BiMDF::CostScalar>::quiet_NaN();
 };

@@ -2,6 +2,7 @@
 //  SPDX-License-Identifier: MIT
 #pragma once
 
+#include <libsatsuma/Config/Export.hh>
 #include <libsatsuma/Solvers/EvenBiMDF.hh>
 #include <libsatsuma/Solvers/BiMDFDoubleCover.hh>
 #include <libsatsuma/Problems/BiMDF.hh>
@@ -13,11 +14,12 @@
 
 namespace Satsuma {
 
-struct BiMDFRefinementResult {
+struct SATSUMA_EXPORT BiMDFRefinementResult {
     std::unique_ptr<BiMDF::Solution> sol;
     BiMDF::CostScalar cost_change;
 };
 
+SATSUMA_EXPORT
 BiMDFRefinementResult refine_with_matching(const BiMDF &_orig,
                                            BiMDF::Solution const& f0,
                                            int max_change,

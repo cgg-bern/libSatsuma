@@ -8,7 +8,7 @@
 
 namespace Satsuma {
 
-SATSUMA_EXPORT MCFResult solve_mcf_via_lemon_netsimp(const MCF &mcf);
+SATSUMA_EXPORT MCFResult solve_mcf_via_lemon_netsimp(MCF const &mcf);
 
 
 } // namespace Satsuma

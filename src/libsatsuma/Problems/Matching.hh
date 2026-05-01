@@ -2,12 +2,13 @@
 //  SPDX-License-Identifier: MIT
 #pragma once
 
+#include <libsatsuma/Config/Export.hh>
 #include <lemon/list_graph.h>
 
 namespace Satsuma {
 
 /// Max-weighted perfect matching
-struct Matching {
+struct SATSUMA_EXPORT Matching {
     using GraphT = lemon::ListGraph;
     using Node = typename GraphT::Node;
     template<typename T> using EdgeMap = typename GraphT::EdgeMap<T>;
@@ -24,7 +25,7 @@ struct Matching {
     bool is_perfect(Solution const&sol) const;
 };
 
-struct MatchingResult {
+struct SATSUMA_EXPORT MatchingResult {
     std::unique_ptr<Matching::Solution> solution;
     Matching::CostScalar weight;
 };

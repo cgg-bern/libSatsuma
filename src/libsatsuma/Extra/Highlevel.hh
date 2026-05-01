@@ -17,20 +17,20 @@
 
 namespace Satsuma {
 
-struct BiMDFMatchingInfo {
+struct SATSUMA_EXPORT BiMDFMatchingInfo {
     BiMDF::CostScalar cost;
     std::vector<double> cost_changes;
     int max_refinement_change;
 };
 
-struct BiMDFMatchingResult {
+struct SATSUMA_EXPORT BiMDFMatchingResult {
     BiMDFResult result;
     BiMDFDoubleCoverInfo double_cover_info;
     BiMDFMatchingInfo info;
     Timekeeper::HierarchicalStopWatchResult stopwatch;
 };
 
-struct BiMDFSolverConfig {
+struct SATSUMA_EXPORT BiMDFSolverConfig {
     BiMDFDoubleCoverConfig double_cover;
     /// matching solver to use for refinement (can theoretically be different from solver used for DC)
     MatchingSolver matching_solver = MatchingSolver::Default;
@@ -52,14 +52,14 @@ BiMDFMatchingResult solve_bimdf_matching(
         const BiMDF &bimdf,
         BiMDFSolverConfig const& _config = BiMDFSolverConfig());
 
-struct BiMDFperConnectedComponentInfo {
+struct SATSUMA_EXPORT BiMDFperConnectedComponentInfo {
     size_t n_nodes;
     size_t n_edges;
     BiMDFDoubleCoverInfo double_cover;
     BiMDFMatchingInfo matching;
 };
 
-struct BiMDFFullResult {
+struct SATSUMA_EXPORT BiMDFFullResult {
     std::unique_ptr<BiMDF::Solution> solution;
     BiMDF::CostScalar cost;
     std::vector<BiMDFperConnectedComponentInfo> cc_info;

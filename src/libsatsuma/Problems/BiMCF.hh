@@ -2,12 +2,13 @@
 //  SPDX-License-Identifier: MIT
 #pragma once
 
+#include <libsatsuma/Config/Export.hh>
 #include <libsatsuma/Problems/BiFlowGraph.hh>
 
 namespace Satsuma {
 
 /// Minimum-cost flow in bidirected graphs
-struct BiMCF : public BiFlowGraph
+struct SATSUMA_EXPORT BiMCF : public BiFlowGraph
 {
     using GraphT = BiFlowGraph::GraphT;
     using Node = BiFlowGraph::Node;
@@ -42,7 +43,7 @@ struct BiMCF : public BiFlowGraph
 
 };
 
-struct BiMCFResult {
+struct SATSUMA_EXPORT BiMCFResult {
     std::unique_ptr<BiMCF::Solution> solution;
     BiMCF::CostScalar cost;
     BiMCF::FlowScalar max_flow; // maximal flow on an Bi-MCF edge // TODO: remove again? not sure if useful

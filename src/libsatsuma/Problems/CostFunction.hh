@@ -140,4 +140,4 @@ inline double Sum::operator()(double l) const {
 
 int SATSUMA_EXPORT find_optimal_integer(CostFunction::Function const& _f, int _lower, int _upper);
 
-} // namespace Objective
+} // namespace CostFunction

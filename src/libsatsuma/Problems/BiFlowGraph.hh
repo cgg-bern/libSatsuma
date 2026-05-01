@@ -1,6 +1,7 @@
 //  SPDX-FileCopyrightText: 2023 Martin Heistermann <martin.heistermann@unibe.ch>
 //  SPDX-License-Identifier: MIT
 #pragma once
+#include <libsatsuma/Config/Export.hh>
 #include <libsatsuma/Problems/BidirectedGraph.hh>
 #include <limits>
 
@@ -8,7 +9,7 @@
 
 
 namespace Satsuma {
-struct BiFlowGraph : public BidirectedGraph
+struct SATSUMA_EXPORT BiFlowGraph : public BidirectedGraph
 {
     using GraphT = BidirectedGraph::GraphT;
     using Node = BidirectedGraph::Node;

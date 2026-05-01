@@ -2,13 +2,14 @@
 //  SPDX-License-Identifier: MIT
 #pragma once
 
+#include <libsatsuma/Config/Export.hh>
 #include <lemon/list_graph.h>
 #include <limits>
 
 namespace Satsuma {
 
 /// Max-weighted perfect capacitated b-matching
-struct BMatching
+struct SATSUMA_EXPORT BMatching
 {
     using GraphT = lemon::ListGraph;
     using Node = typename GraphT::Node;
@@ -30,7 +31,7 @@ struct BMatching
     static DegreeScalar inf() {return std::numeric_limits<DegreeScalar>::max();}
 };
 
-struct BMatchingResult {
+struct SATSUMA_EXPORT BMatchingResult {
     std::unique_ptr<BMatching::Solution> solution;
     BMatching::CostScalar weight;
 };

@@ -1,5 +1,6 @@
 //  SPDX-FileCopyrightText: 2023 Martin Heistermann <martin.heistermann@unibe.ch>
 //  SPDX-License-Identifier: MIT
+#include <libsatsuma/Config/Export.hh>
 #pragma once
 
 #include <libsatsuma/Problems/BiMCF.hh>
@@ -13,7 +14,7 @@ enum class DeviationLimitKind {
     Default = NodeThroughflow
 };
 
-class BiMCF_to_BMatching
+class SATSUMA_EXPORT BiMCF_to_BMatching
 {
 public:
     struct Config {

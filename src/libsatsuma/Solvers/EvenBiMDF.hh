@@ -2,6 +2,7 @@
 //  SPDX-License-Identifier: MIT
 #pragma once
 
+#include <libsatsuma/Config/Export.hh>
 #include <libsatsuma/Problems/BiMDF.hh>
 #include <libsatsuma/Problems/TJoin.hh>
 
@@ -17,7 +18,7 @@ enum class EveningMode {
   RoundToEven // round each target length to an even value. Requires that odd lengths can always be adjusted (lower<upper)
 };
 
-struct EveningResult {
+struct SATSUMA_EXPORT EveningResult {
     std::unique_ptr<BiMDF::Guess> guess;
     double cost;
     size_t n_adjustments;
@@ -25,9 +26,9 @@ struct EveningResult {
 };
 
 
-EveningResult round_to_even(const BiMDF &mdf);
+SATSUMA_EXPORT EveningResult round_to_even(const BiMDF &mdf);
 
-class TJoinBasedRounding {
+class SATSUMA_EXPORT TJoinBasedRounding {
 public:
     TJoinBasedRounding(const BiMDF &_bimdf, int _verbosity=2)
         : bimdf_(_bimdf)
@@ -53,7 +54,7 @@ private:
     TJoin tjoin_;
 
 };
-EveningResult guess_for_even_rhs(const BiMDF &bimdf, int verbosity, EveningMode mode);
+SATSUMA_EXPORT EveningResult guess_for_even_rhs(const BiMDF &bimdf, int verbosity, EveningMode mode);
 
 
 } // namespace Satsuma

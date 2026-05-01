@@ -1,12 +1,13 @@
 //  SPDX-FileCopyrightText: 2023 Martin Heistermann <martin.heistermann@unibe.ch>
 //  SPDX-License-Identifier: MIT
+#include <libsatsuma/Config/Export.hh>
 #pragma once
 #include <libsatsuma/Problems/BiMDF.hh>
 #include <libsatsuma/Problems/BiMCF.hh>
 
 namespace Satsuma {
 
-class BiMDF_to_BiMCF
+class SATSUMA_EXPORT BiMDF_to_BiMCF
 {
 public:
     struct Config {

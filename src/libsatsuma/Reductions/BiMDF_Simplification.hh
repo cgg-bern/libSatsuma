@@ -1,5 +1,6 @@
 //  SPDX-FileCopyrightText: 2023 Martin Heistermann <martin.heistermann@unibe.ch>
 //  SPDX-License-Identifier: MIT
+#include <libsatsuma/Config/Export.hh>
 #pragma once
 
 #include <libsatsuma/Problems/BiMDF.hh>
@@ -11,7 +12,7 @@ namespace Satsuma {
 /// For an efficient implementation, we would use dynamic subgraph adapters,
 /// but some of the current code relies on accessing the complete graph.
 /// TODO PERF: do use dynamic subgraph adapters
-class BiMDF_ConnectedComponents
+class SATSUMA_EXPORT BiMDF_ConnectedComponents
 {
 public:
     using Node = BiMDF::Node;
@@ -33,7 +34,7 @@ private:
 
 /// Create simplified BiMDF problem by collapsing demand-0 nodes
 /// that have exactly one outgoing and one incoming arc.
-class BiMDF_Simplification
+class SATSUMA_EXPORT BiMDF_Simplification
 {
 public:
     using Node = BiMDF::Node;

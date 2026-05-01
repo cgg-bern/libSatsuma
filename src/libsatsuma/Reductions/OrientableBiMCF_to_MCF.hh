@@ -1,3 +1,4 @@
+#include <libsatsuma/Config/Export.hh>
 #pragma once
 
 #include <libsatsuma/Problems/BiMCF.hh>
@@ -6,7 +7,7 @@
 
 namespace Satsuma {
 
-class OrientedBiMCF {
+class SATSUMA_EXPORT OrientedBiMCF {
 public:
     OrientedBiMCF(BiMCF const &_bimcf, Orientation const &_ori);
     MCF const& mcf() const {return mcf_;}

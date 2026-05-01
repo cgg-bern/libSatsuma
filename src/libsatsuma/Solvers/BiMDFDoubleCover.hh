@@ -2,6 +2,7 @@
 //  SPDX-License-Identifier: MIT
 #pragma once
 
+#include <libsatsuma/Config/Export.hh>
 #include <libsatsuma/Solvers/EvenBiMDF.hh>
 #include <libsatsuma/Problems/BiMDF.hh>
 #include <libsatsuma/Solvers/Matching.hh>
@@ -15,7 +16,7 @@
 
 namespace Satsuma {
 
-struct BiMDFDoubleCoverInfo {
+struct SATSUMA_EXPORT BiMDFDoubleCoverInfo {
     TJoin::CostScalar evening_cost;
     size_t evening_n_adjustments;
     size_t evening_n_bound_adjustments;
@@ -24,13 +25,13 @@ struct BiMDFDoubleCoverInfo {
     BiMCF::FlowScalar max_deviation_solution;
 };
 
-struct BiMDFDoubleCoverResult {
+struct SATSUMA_EXPORT BiMDFDoubleCoverResult {
     std::unique_ptr<BiMDF::Solution> solution;
     BiMDFDoubleCoverInfo info;
     Timekeeper::HierarchicalStopWatchResult stopwatch;
 };
 
-struct BiMDFDoubleCoverConfig {
+struct SATSUMA_EXPORT BiMDFDoubleCoverConfig {
     /// Maximum deviation from initial guess that is represented exactly
     int max_deviation = 5;
     /// Used in MST evening_mode
@@ -41,6 +42,7 @@ struct BiMDFDoubleCoverConfig {
 };
 
 
+SATSUMA_EXPORT
 BiMDFDoubleCoverResult approximate_bimdf_doublecover(
         const BiMDF &bimdf,
         BiMDFDoubleCoverConfig const& config = BiMDFDoubleCoverConfig());

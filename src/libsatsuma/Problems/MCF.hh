@@ -2,13 +2,14 @@
 //  SPDX-License-Identifier: MIT
 #pragma once
 
+#include <libsatsuma/Config/Export.hh>
 #include <lemon/list_graph.h>
 #include <limits>
 
 namespace Satsuma {
 
 // Min-Cost-Flow
-struct MCF
+struct SATSUMA_EXPORT MCF
 {
     using GraphT = lemon::ListDigraph;
     using Node = typename GraphT::Node;
@@ -54,7 +55,7 @@ struct MCF
     }
 };
 
-struct MCFResult {
+struct SATSUMA_EXPORT MCFResult {
     std::unique_ptr<MCF::Solution> solution;
     MCF::CostScalar cost;
 };

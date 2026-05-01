@@ -2,11 +2,12 @@
 //  SPDX-License-Identifier: MIT
 #pragma once
 
+#include <libsatsuma/Config/Export.hh>
 #include <lemon/list_graph.h>
 
 namespace Satsuma {
 
-struct TJoin {
+struct SATSUMA_EXPORT TJoin {
     using GraphT = lemon::ListGraph;
     using Node = typename GraphT::Node;
     using Edge = typename GraphT::Edge;
@@ -28,7 +29,7 @@ struct TJoin {
 
 };
 
-struct TJoinResult {
+struct SATSUMA_EXPORT TJoinResult {
     std::unique_ptr<TJoin::Solution> solution;
     TJoin::CostScalar cost;
 };

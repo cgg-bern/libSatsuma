@@ -2,11 +2,12 @@
 //  SPDX-License-Identifier: MIT
 #pragma once
 
+#include <libsatsuma/Config/Export.hh>
 #include <lemon/list_graph.h>
 
 namespace Satsuma {
 
-struct BidirectedGraph
+struct SATSUMA_EXPORT BidirectedGraph
 {
     using GraphT = lemon::ListGraph;
     using Node = typename GraphT::Node;

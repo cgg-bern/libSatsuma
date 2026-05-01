@@ -1,5 +1,6 @@
 //  SPDX-FileCopyrightText: 2023 Martin Heistermann <martin.heistermann@unibe.ch>
 //  SPDX-License-Identifier: MIT
+#include <libsatsuma/Config/Export.hh>
 #pragma once
 
 #include <libsatsuma/Problems/BiMCF.hh>
@@ -11,7 +12,7 @@ namespace Satsuma {
 /// Solve via asymmetric Double cover.
 /// Node demands must be even numbers.
 /// If additionally, lower and upper bounds are even (or $\infty$), the solution is exact.
-class BiMCF_to_MCF
+class SATSUMA_EXPORT BiMCF_to_MCF
 {
 public:
     enum class Method {
